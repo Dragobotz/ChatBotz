@@ -36,10 +36,10 @@ grouplist = 1
 
 
 async def init():
-    await app.start()
+    await app.support()
 
-    @app.on_message(filters.command(["start", "help"]))
-    async def start_command(_, message: Message):
+    @app.on_message(filters.command(["support", "help"]))
+    async def support_command(_, message: Message):
         if await mongo.is_banned_user(message.from_user.id):
             return
         await mongo.add_served_user(message.from_user.id)
@@ -306,7 +306,7 @@ async def init():
                     "Failed to send the message, User might have blocked the bot or something wrong happened. Please check logs"
                 )
 
-    print("[LOG] - Yukki Chat Bot Started")
+    print("[LOG] - DragoXServer Bot Started")
     await idle()
 
 
